@@ -1,0 +1,42 @@
+﻿@model IEnumerable<DynamicSlider.Models.Page>
+
+@{
+    ViewBag.Title = "Details";
+}
+<h2>Beauty Saloon By Fawad's G.F :P</h2>
+<div class="container">
+    <h2>Dynamic Carousel Example</h2>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+                    @foreach (var item in Model)
+                    {
+                        if (item.Id == Model.ElementAt(0).Id)
+                        {
+                            <div class='item active'> 
+                       
+                            <img src="~/Content/images/@Html.DisplayFor(modelItem => item.ImgPath)" alt="Chicago" style="width:100%;">
+                            <div class="carousel-caption">
+                                <h3>@Html.DisplayFor(modelItem => item.Heading)</h3>
+                                <p>@Html.DisplayFor(modelItem => item.Text)</p>
+                            </div>
+                           </div>
+                        }
+                        else
+                        {
+                            <div class='item'>
+
+                                <img src="~/Content/images/@Html.DisplayFor(modelItem => item.ImgPath)" alt="Chicago" style="width:100%;">
+                                <div class="carousel-caption">
+                                    <h3>@Html.DisplayFor(modelItem => item.Heading)</h3>
+                                    <p>@Html.DisplayFor(modelItem => item.Text)</p>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+        </div>
+    </div>
+        <p> 
+            @Html.ActionLink("Back to List", "Index")
+        </p>
